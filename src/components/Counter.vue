@@ -21,16 +21,32 @@
     <div>
       <p>Vitesse actuelle : {{ speed }} m.s</p>
     </div>
+    <div id="doeSupported">No</div>
+    <div id="doeSupported2">No</div>
+
   </div>
 </template>
 
 <script>
 
+
+window.addEventListener('mousemove', function (event) {
+  console.log(event);
+  document.getElementById('doeSupported').innerHTML = event.screenX
+});
+
+window.addEventListener('deviceorientation', function (event) {
+  console.log(event);
+  document.getElementById('doeSupported2').innerHTML = event.alpha
+});
+
+
+
 let timer;
 export default {
   name: "counter",
-  props: ['picked','numbervalue'],
-  data () {
+  props: ['picked', 'numbervalue'],
+  data() {
     return {
       tens: 0,     //0~99
       seconds: 0,  //0~59
@@ -89,12 +105,12 @@ export default {
         this.mins++  //當秒數超過60，分++
         this.seconds = 0;
       }
-      if(this.picked == "time" && this.numbervalue == stockseconds) {
+      if (this.picked == "time" && this.numbervalue == stockseconds) {
         this.stopHandler()
       }
     },
     test() {
-      window.addEventListener('devicemotion', function(event) {
+      window.addEventListener('devicemotion', function (event) {
         return event.acceleration.x
       });
     }
