@@ -18,24 +18,23 @@
       <button class="stop" @click="stopHandler">Stop</button>
       <button class="reset" @reset="resetHandler">Reset</button>
     </div>
-
+    <div>
+      <p>Vitesse actuelle : {{ speed }} m.s</p>
+    </div>
   </div>
-
-
 </template>
 
 <script>
-import moment from 'moment'
-// require('moment')
 
 let timer;
 export default {
-  name: "Home",
-  data() {
+  name: "counter",
+  props: ['picked','numbervalue'],
+  data () {
     return {
       tens: 0,     //0~99
       seconds: 0,  //0~59
-      mins: 0,
+      mins: 0
     }
   },
   computed: {
@@ -59,10 +58,11 @@ export default {
       } else {
         return this.mins
       }
-    }
+    },
   },
   methods: {
     startHandler() {
+      console.log(this.picked)
       clearInterval(timer);
       timer = setInterval(() => {
         this.addHandler()
@@ -79,19 +79,29 @@ export default {
     },
     addHandler() {
       //控制 this.tens 和 this.seconds 和 this.mins
+      let stockseconds = 0
       this.tens++  //毫秒++
       if (this.tens > 99) {
-        this.seconds++
+        stockseconds = this.seconds++
         this.tens = 0;
       }
       if (this.seconds > 60) {
         this.mins++  //當秒數超過60，分++
         this.seconds = 0;
       }
+      if(this.picked == "time" && this.numbervalue == stockseconds) {
+        this.stopHandler()
+      }
+    },
+    test() {
+      window.addEventListener('devicemotion', function(event) {
+        return event.acceleration.x
+      });
     }
   }
 }
 </script>
+
 
 <style scoped>
 html,

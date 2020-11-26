@@ -1,18 +1,11 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Home from "../components/Home.vue";
 import CounterParameters from "../components/CounterParameters.vue";
 import CounterDatas from "../components/CounterDatas.vue";
-import Counting from "../components/Counting.vue";
 import Done from "../components/Done.vue";
 
 const routes = [
     {
         path: "/",
-        name: "Home",
-        component: Home,
-    },
-    {
-        path: "/counterparameters",
         name: "CounterParameters",
         component: CounterParameters,
     },
@@ -20,11 +13,6 @@ const routes = [
         path: "/counterdatas",
         name: "CounterDatas",
         component: CounterDatas,
-    },
-    {
-        path: "/counting",
-        name: "Counting",
-        component: Counting,
     },
     {
         path: "/done",
