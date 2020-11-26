@@ -27,8 +27,8 @@
       </form>
     </div>
     <counter
-        v-bind:picked="picked"
-        v-bind:numbervalue="numbervalue"
+        :picked="picked"
+        :numbervalue="numbervalue"
     />
   </div>
 
@@ -42,7 +42,7 @@ export default {
   components: {Counter},
   data () {
     return {
-      picked: 0,
+      picked: "speed",
       numbervalue: 0
     }
   },
