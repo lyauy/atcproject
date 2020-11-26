@@ -20,12 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cca88a1c-a7f7-4b58-bb00-e028765711f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Done.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/filters/filters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CounterParameters.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CounterParameters.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Counting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Counting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +54,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -71,6 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1606309819465</updated>
       <workItem from="1606309822251" duration="12654000" />
+      <workItem from="1606351405316" duration="1798000" />
     </task>
     <servers />
   </component>
@@ -87,6 +89,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="483" y="229" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606309870823">
