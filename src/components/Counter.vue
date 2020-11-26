@@ -23,23 +23,12 @@
     </div>
     <div id="doeSupported">No</div>
     <div id="doeSupported2">No</div>
+    <div id="doeSupported3">No</div>
 
   </div>
 </template>
 
 <script>
-
-
-window.addEventListener('mousemove', function (event) {
-  console.log(event);
-  document.getElementById('doeSupported').innerHTML = event.screenX
-});
-
-window.addEventListener('deviceorientation', function (event) {
-  console.log(event);
-  document.getElementById('doeSupported2').innerHTML = event.alpha
-});
-
 
 
 let timer;
@@ -52,6 +41,22 @@ export default {
       seconds: 0,  //0~59
       mins: 0
     }
+  },
+  mounted() {
+    window.addEventListener('mousemove', function (event) {
+      console.log(event);
+      document.getElementById('doeSupported').innerHTML = event.screenX
+    });
+
+    window.addEventListener('deviceorientation', function (event) {
+      console.log(event);
+      document.getElementById('doeSupported2').innerHTML = event.alpha
+    });
+
+    window.addEventListener('devicemotion', function (event) {
+      console.log(event);
+      document.getElementById('doeSupported3').innerHTML = event.acceleration.x
+    });
   },
   computed: {
     tenNum() {
