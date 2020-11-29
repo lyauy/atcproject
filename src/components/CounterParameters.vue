@@ -1,17 +1,16 @@
 <template>
   <div class="container">
-    <div class="form">
+    <div class="form justify-items-center">
       <form id="app"
             method="post">
       <p>Choisir le type de valeur indiqué</p>
       <div id="v-model-radiobutton">
         <input type="radio" id="speed" value="speed" v-model="picked" checked>
-        <label for="speed">Vitesse</label>
+        <label for="speed">Accélération (m.s/2)</label>
         <br>
         <input type="radio" id="time" value="time" v-model="picked">
-        <label for="time">Temps</label>
+        <label for="time">Temps (secondes)</label>
         <br>
-        <span>Choisi : {{ picked }}</span>
       </div>
 
       <p>
@@ -30,6 +29,7 @@
         :picked="picked"
         :numbervalue="numbervalue"
     />
+
   </div>
 
 </template>
@@ -39,11 +39,11 @@ import Counter from "./Counter.vue";
 
 export default {
   name: "CounterParameters",
-  components: {Counter},
+  components: { Counter},
   data () {
     return {
       picked: "speed",
-      numbervalue: 0
+      numbervalue: 0,
     }
   },
   computed: {

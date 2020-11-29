@@ -1,10 +1,11 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Start</router-link> |
-      <router-link to="/counterdatas">Datas</router-link>
+  <div>
+    <h1>Against the clock</h1>
+    <div id="app">
+      <div id="nav">
+      </div>
+      <router-view />
     </div>
-    <router-view />
   </div>
 </template>
 

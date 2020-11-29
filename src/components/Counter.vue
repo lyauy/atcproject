@@ -15,27 +15,18 @@
     </div>
     <div class="btn-group">
       <button class="start" @click="startListener">Start</button>
-      <button class="stop" @click="stopHandler">Stop</button>
-      <button class="reset" @reset="resetHandler">Reset</button>
+      <button class="stop" @click="stopHandler">Reset</button>
     </div>
     <div>
-      <p>Vitesse actuelle : {{ speed }} m.s</p>
+      <p>Accélération actuelle : {{ speed }} m.s/2</p>
+      <p>Temps enregistré : {{ time }} </p>
+      <p>Accélération enregistrée : {{ finalspeed }} m.s/2</p>
     </div>
-    <div id="doeSupported">No</div>
-    <div id="doeSupported2">No</div>
-    <div id="doeSupported3">No</div>
 
   </div>
 </template>
 
 <script>
-
-const handler = event => {
-  event.stopPropagation();
-  event.preventDefault();
-
-  return false;
-};
 
 let timer;
 export default {
@@ -51,11 +42,11 @@ export default {
       mins: 0,
       movement: 0,
       speed: 0,
+      finalspeed: '',
+      time: '',
       start: false,
       stop: false,
     }
-  },
-  mounted() {
   },
   computed: {
     tenNum() {
@@ -84,38 +75,32 @@ export default {
     startListener() {
       let t = this;
       window.addEventListener('mousemove', function (event) {
-        t.movement = event.screenX
-        if(t.movement > 1 && !t.start) {
+        t.speed = event.screenX
+        if(t.speed > 1 && !t.start) {
           t.startHandler();
           t.start = true;
         }
-        document.getElementById('doeSupported').innerHTML = t.movement
-        if (t.picked == "speed" && t.numbervalue == t.movement) {
-          t.stopHandler()
+        if (t.picked == "speed" && t.numbervalue == t.speed) {
+          t.stopHandler(event)
         }
       });
 
       window.addEventListener('deviceorientation', function (event) {
         t.movement = event.alpha
-        if(t.movement > 0.01 && !t.start) {
+        if((t.speed >= 1 || t.speed <= -1) && !t.start) {
           t.startHandler();
           t.start = true;
-        }
-        document.getElementById('doeSupported2').innerHTML = t.movement
-        if (t.picked == "speed" && (t.numbervalue >= t.movement && t.numbervalue <= t.movement+1)) {
-          t.stopHandler()
         }
       });
 
       window.addEventListener('devicemotion', function (event) {
-        t.movement = event.acceleration.x
-        if(t.movement > 0.01 && !t.start) {
+        t.speed = event.acceleration.x
+        if((t.speed >= 1 || t.speed <= -1) && !t.start) {
           t.startHandler();
           t.start = true;
         }
-        document.getElementById('doeSupported3').innerHTML = t.movement
-        if (t.picked == "speed" && (t.numbervalue >= t.movement && t.numbervalue <= t.movement+1)) {
-          t.stopHandler()
+        if (t.picked == "speed" && (t.numbervalue >= t.speed && t.numbervalue <= t.speed+1)) {
+          t.stopHandler(event)
         }
       });
 
@@ -128,18 +113,15 @@ export default {
     },
     stopHandler() {
       clearInterval(timer);
-
-      window.removeEventListener('mousemove', handler, true);
-      window.removeEventListener('deviceorientation', handler, true);
-      window.removeEventListener('devicemotion', handler, true);
-
+      this.time = this.minNum+":"+this.secondNum+":"+this.tenNum
+      this.finalspeed = this.speed
       this.start = false;
-    },
-    resetHandler() {
-      clearInterval(timer);
       this.tens = 0;
       this.seconds = 0;
       this.mins = 0;
+      this.speed = 0;
+      this.movement = 0;
+      return false;
     },
     addHandler() {
       //控制 this.tens 和 this.seconds 和 this.mins
